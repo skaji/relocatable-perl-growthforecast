@@ -1,6 +1,6 @@
 # Relocatable Perl with GrowthForecast
 
-This repository is just an attempt that shows
+This repository is just an attempt to show
 how latest, pre-compiled, relocatable Perl is useful!
 
 You can download *lastest*, *pre-compiled*, *relocatable* Perl with GrowthForecast from
