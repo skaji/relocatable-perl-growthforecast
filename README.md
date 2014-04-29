@@ -3,7 +3,7 @@
 This repository is just an attempt to show
 how latest, pre-compiled, relocatable Perl is useful!
 
-You can download *lastest*, *pre-compiled*, *relocatable* Perl with GrowthForecast from
+You can download *latest*, *pre-compiled*, *relocatable* Perl with GrowthForecast from
 [release page](https://github.com/shoichikaji/relocatable-perl-growthforecast/releases).
 
 Once you fetch a tarball, just extract it to your favorite directory
