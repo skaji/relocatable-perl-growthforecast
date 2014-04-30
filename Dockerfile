@@ -47,6 +47,15 @@ RUN /root/perl/bin/perl /root/build/header-growthforecast.pl /root/perl/bin/grow
 ADD misc/change-shebang.pl /root/build/change-shebang.pl
 RUN /root/perl/bin/perl /root/build/change-shebang.pl /root/perl/bin/*
 
+RUN rm -rf /root/perl/local/etc/fonts
+RUN mkdir -p /root/perl/local/etc/fontconfig/conf.d /root/perl/local/share/fonts/truetype/dejavu /root/perl/local/var/fontconfig
+RUN wget -q http://sourceforge.net/projects/dejavu/files/dejavu/2.34/dejavu-fonts-ttf-2.34.tar.bz2
+RUN tar xjf dejavu-fonts-ttf-2.34.tar.bz2
+RUN cp dejavu-fonts-ttf-2.34/ttf/* /root/perl/local/share/fonts/truetype/dejavu
+RUN cp dejavu-fonts-ttf-2.34/fontconfig/* /root/perl/local/share/fontconfig/conf.avail
+ADD misc/fonts.conf /root/perl/local/etc/fontconfig/fonts.conf
+RUN cd /root/perl/local/etc/fontconfig/conf.d && ln -s ../../../share/fontconfig/conf.avail/*.conf .
+
 RUN cd /root && tar czf perl.tar.gz perl
 
 ADD misc/static-server.pl /root/static-server.pl

@@ -15,7 +15,10 @@ print {$fh} <<'...';
 exec "$(dirname "$0")"/perl -x -- "$0" "$@"
 #!perl
 use FindBin;
-$ENV{FONTCONFIG_FILE} = "$FindBin::Bin/../local/etc/fonts/fonts.conf";
+$ENV{FONTCONFIG_FILE} = "$FindBin::Bin/../local/etc/fontconfig/fonts.conf";
+$ENV{XDG_CONFIG_HOME} = "$FindBin::Bin/../local/etc";
+$ENV{XDG_DATA_HOME} = "$FindBin::Bin/../local/share";
+$ENV{XDG_CACHE_HOME} = "$FindBin::Bin/../local/var";
 $ENV{PANGO_LIBDIR} = "$FindBin::Bin/../local/lib";
 $ENV{PANGO_SYSCONFDIR} = "$FindBin::Bin/../local/etc";
 ...
