@@ -1,8 +1,8 @@
 diff --git inc/MyBuilder.pm inc/MyBuilder.pm
-index 65618ed..b83f062 100644
+index f7b7daa..2366292 100644
 --- inc/MyBuilder.pm
 +++ inc/MyBuilder.pm
-@@ -79,7 +79,7 @@ sub ACTION_code { # default action
+@@ -80,7 +80,7 @@ sub ACTION_code { # default action
          join ' ', (map { "-L$_" } @libdirs),  $libs;
      };
  
@@ -11,7 +11,7 @@ index 65618ed..b83f062 100644
  
      $self->perl_bindings(sub {
          xsystem($self->perl,
-@@ -154,7 +154,7 @@ sub maybe_ccache {
+@@ -155,7 +155,7 @@ sub maybe_ccache {
  }
  
  sub find_libdirs {
