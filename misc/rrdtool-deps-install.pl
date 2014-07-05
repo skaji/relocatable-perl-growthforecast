@@ -15,8 +15,7 @@ BEGIN {
     *main::pushd = *pushd;
 }
 
-
-sub run { print "    ---> @_\n"; !system @_ or die "    ===> FAIL @_\n"; }
+sub run { !system @_ or die "===> FAIL @_\n"; }
 sub install {
     my $url   = shift;
     my $extra = shift || "";
@@ -27,8 +26,10 @@ sub install {
                    : $type eq 'tar.bz2' ? 'xjf'
                    :                      'xJf';
 
+    print "---> installing $archive\n";
+
     if (-f $archive) {
-        print "    ---> using pre-download $archive\n";
+        print "---> using pre-download $archive\n";
     } else {
         run "wget", "-q", $url;
     }
@@ -56,8 +57,7 @@ $ENV{LDFLAGS} = "-L$prefix/lib -Wl,-rpath,$prefix/lib";
 $ENV{CPPFLAGS} = "-I$prefix/include";
 $ENV{PATH} = "$prefix/bin:$ENV{PATH}";
 
-install "http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz",
-     "--with-internal-glib";
+install "http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz", "--with-internal-glib";
 
 $ENV{PKGCONFIG} = "$prefix/bin/pkg-config";
 $ENV{PKG_CONFIG} = $ENV{PKGCONFIG};
@@ -66,13 +66,11 @@ $ENV{PKG_CONFIG_PATH} = "$prefix/lib/pkgconfig";
 install "http://zlib.net/zlib-1.2.8.tar.gz";
 install "http://prdownloads.sourceforge.net/libpng/libpng-1.6.10.tar.gz";
 install "http://download.savannah.gnu.org/releases/freetype/freetype-2.5.3.tar.gz";
-install "ftp://xmlsoft.org/libxml2/libxml2-2.9.1.tar.gz",
-    "--without-python";
+install "ftp://xmlsoft.org/libxml2/libxml2-2.9.1.tar.gz", "--without-python";
 install "http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz";
 install "http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.1.tar.gz";
 install "http://cairographics.org/releases/pixman-0.32.4.tar.gz";
-install "http://cairographics.org/releases/cairo-1.12.16.tar.xz",
-     "--enable-xlib=no --enable-xlib-render=no --enable-win32=no";
+install "http://cairographics.org/releases/cairo-1.12.16.tar.xz", "--enable-xlib=no --enable-xlib-render=no --enable-win32=no";
 install "ftp://sourceware.org/pub/libffi/libffi-3.0.11.tar.gz"; # 3.0.13 has location bug
 install "http://ftp.gnu.org/pub/gnu/gettext/gettext-0.18.3.2.tar.gz";
 install "http://ftp.gnome.org/pub/gnome/sources/glib/2.40/glib-2.40.0.tar.xz";
