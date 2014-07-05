@@ -47,8 +47,8 @@ fi
 
 ADD misc/header-growthforecast.pl /tmp/build/header-growthforecast.pl
 RUN /opt/perl/bin/perl /tmp/build/header-growthforecast.pl /opt/perl/bin/growthforecast.pl
-ADD misc/change-shebang.pl /tmp/build/change-shebang.pl
-RUN /opt/perl/bin/perl /tmp/build/change-shebang.pl /opt/perl/bin/*
+ADD misc/change-shebang.pl /opt/perl/bin/change-shebang.pl
+RUN /opt/perl/bin/change-shebang.pl /opt/perl/bin/*
 
 RUN rm -rf /opt/perl/local/etc/fonts
 RUN mkdir -p /opt/perl/local/etc/fontconfig/conf.d /opt/perl/local/share/fonts/truetype/dejavu /opt/perl/local/var/fontconfig

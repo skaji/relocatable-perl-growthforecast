@@ -1,4 +1,6 @@
-#!/usr/bin/env perl
+#!/bin/sh
+exec "$(dirname "$0")"/perl -x -- "$0" "$@"
+#!perl
 use strict;
 use warnings;
 use utf8;
