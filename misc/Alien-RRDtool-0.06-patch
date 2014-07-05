@@ -16,7 +16,7 @@ index f7b7daa..2366292 100644
  
  sub find_libdirs {
 -    my @dirs = qw(/usr/local/lib /opt/X11/lib);
-+    my @dirs = qw(/root/perl/local/lib);
++    my @dirs = qw(/opt/perl/local/lib);
      return @dirs;
  }
  

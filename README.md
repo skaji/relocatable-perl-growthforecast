@@ -9,7 +9,7 @@ You can download *latest*, *pre-compiled*, *relocatable* Perl with GrowthForecas
 Once you fetch a tarball, just extract it to your favorite directory
 and type
 
-    > bin/growthforecast.pl
+    > perl/bin/growthforecast.pl
 
 Access 5125 port:
 
@@ -17,13 +17,17 @@ Access 5125 port:
 
 I've confirmed that the pre-compiled perl worked in 64bit centos6.4 and ubuntu14.04.
 
-
 ## how to build yourself
 
 It's pretty easy (I hope so). Install docker and type:
 
     > docker build -t you/perl git://github.com/shoichikaji/relocatable-perl-growthforecast.git
-    # wait, wait, wait, ..
-    > docker run -d -p 5000:5000 you/perl
-    > wget http://localhost:5000/perl.tar.gz
+    > docker run -d you/perl
+    > docker cp CONTAINER_ID:/opt/perl.tar.gz .
+
+## pull docker image
+
+    > docker pull skaji/relocatable-perl-growthforecas
+
+See https://registry.hub.docker.com/u/skaji/relocatable-perl-growthforecas
 

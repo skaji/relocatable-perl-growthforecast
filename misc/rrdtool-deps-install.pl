@@ -16,7 +16,7 @@ BEGIN {
 }
 
 
-sub run { print "-> @_\n"; !system @_ or die "=> FAIL @_\n"; }
+sub run { print "    ---> @_\n"; !system @_ or die "    ===> FAIL @_\n"; }
 sub install {
     my $url   = shift;
     my $extra = shift || "";
@@ -27,9 +27,8 @@ sub install {
                    : $type eq 'tar.bz2' ? 'xjf'
                    :                      'xJf';
 
-    print "\e[1;37m", "-> installing $dir", "\e[m", "\n" if -t STDIN;
     if (-f $archive) {
-        print "-> using pre-download $archive\n";
+        print "    ---> using pre-download $archive\n";
     } else {
         run "wget", "-q", $url;
     }
