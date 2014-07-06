@@ -48,11 +48,11 @@ RUN /opt/perl/bin/perl /tmp/build/header-growthforecast.pl /opt/perl/bin/growthf
 
 RUN /opt/perl/bin/change-shebang -f /opt/perl/bin/*
 
-RUN cp -r /opt/perl /tmp/growthforecast-`/opt/perl/bin/perl -MGrowthForecast -e 'print GrowthForecast->VERSION'`
-RUN cd /tmp && tar czf /artifact/growthforecast-`/opt/perl/bin/perl -MGrowthForecast -e 'print GrowthForecast->VERSION'`.tar.gz \
-                                 growthforecast-`/opt/perl/bin/perl -MGrowthForecast -e 'print GrowthForecast->VERSION'`
+RUN cp -r /opt/perl /tmp/growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
+RUN cd /tmp && tar czf /artifact/growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`.tar.gz \
+                                 growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
 
-RUN rm -rf /tmp/growthforecast-`/opt/perl/bin/perl -MGrowthForecast -e 'print GrowthForecast->VERSION'`
+RUN rm -rf /tmp/growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
 RUN rm -rf /tmp/build
 
 CMD ["sleep", "infinity"]

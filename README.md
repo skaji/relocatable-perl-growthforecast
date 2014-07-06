@@ -6,12 +6,17 @@ how latest, pre-compiled, relocatable Perl is useful!
 You can download *latest*, *pre-compiled*, *relocatable* Perl with GrowthForecast from
 [release page](https://github.com/shoichikaji/relocatable-perl-growthforecast/releases).
 
-Once you fetch a tarball, just extract it to your favorite directory
-and type
+## install
 
-    > perl/bin/growthforecast.pl
+Just fetch a tarball, and extract it to your favorite directory:
 
-Access 5125 port:
+    > wget https://github.com/shoichikaji/relocatable-perl-growthforecast/releases/download/0.10/growthforecast-0.83-x86_64-linux.tar.gz
+    > tar xzf growthforecast-0.83-x86_64-linux.tar.gz
+    > mv growthforecast-0.83-x86_64-linux ~/my-favorite-name
+
+    > ~/my-favorite-name/bin/growthforecast.pl
+
+Then access 5125 port:
 
     > curl http://localhost:5125
 
