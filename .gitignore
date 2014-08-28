@@ -2,3 +2,5 @@
 /perl
 /perl*.tar.gz
 /growthforecast*
+/misc/mac-build
+/misc/growthforecast*.tar.gz
