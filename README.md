@@ -20,7 +20,10 @@ Then access 5125 port:
 
     > curl http://localhost:5125
 
-I've confirmed that the pre-compiled perl worked in 64bit centos6.4 and ubuntu14.04.
+I've confirmed that the pre-compiled perl worked on:
+
+* 64bit centos 6.4 and ubuntu 12.04, 14.04 (growthforecast-0.83-x86_64-linux.tar.gz)
+* Mac OS X 10.9.4 (growthforecast-0.83-darwin-2level.tar.gz)
 
 ## how to build yourself
 
