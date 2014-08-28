@@ -80,7 +80,7 @@ tar xzf Alien-RRDtool-0.06.tar.gz
 
 # 8
 NAME=growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
-cp -r /opt/perl $NAME
+/usr/local/opt/coreutils/libexec/gnubin/cp -r /opt/perl $NAME
 ./$NAME/bin/perl -MRRDs -e1
 NUM=`find $NAME/lib -name "*.bundle" | xargs -L1 otool -L | grep /usr/local | wc -l`
 if [ $NUM -ne 0 ]; then echo unexpected /usr/local deps; exit 1; fi
@@ -88,5 +88,5 @@ NUM=`find $NAME/local/lib -type f -name "*.dylib" | xargs -L1 otool -L | grep /u
 if [ $NUM -ne 0 ]; then echo unexpected /usr/local deps; exit 1; fi
 
 # 9
-tar czf ../$NAME.tar.gz $NAME
+/usr/local/opt/gnu-tar/bin/gtar czf ../$NAME.tar.gz $NAME
 
