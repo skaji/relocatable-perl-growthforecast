@@ -1,7 +1,7 @@
 FROM skaji/relocatable-perl
 MAINTAINER Shoichi Kaji <skaji@cpan.org>
 
-RUN yum install -y xz gcc-c++ chrpath bzip2
+RUN yum install -y xz gcc-c++ chrpath bzip2 patch
 
 RUN mkdir /tmp/build
 WORKDIR /tmp/build
