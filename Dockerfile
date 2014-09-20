@@ -30,17 +30,17 @@ RUN tar xzf Alien-RRDtool-0.06.tar.gz && \
     PKG_CONFIG_PATH=/opt/perl/local/lib/pkgconfig \
     /opt/perl/bin/cpanm -nq .
 
-RUN chrpath -r \$ORIGIN/../../../../../../local/lib /opt/perl/lib/site_perl/5.20.0/x86_64-linux/auto/RRDs/RRDs.so
+RUN chrpath -r \$ORIGIN/../../../../../../local/lib /opt/perl/lib/site_perl/5.*/x86_64-linux/auto/RRDs/RRDs.so
 RUN /opt/perl/bin/perl -MRRDs -e0
 
 RUN /opt/perl/bin/cpanm -nq --installdeps GrowthForecast@0.83
 RUN /opt/perl/bin/cpanm -nq GrowthForecast@0.83
 
 # I don't know why: sometimes missing dist share files
-RUN if [ `find /opt/perl/lib/site_perl/5.20.0/auto/share/dist/GrowthForecast -type f | wc -l` -eq 20 ]; then \
+RUN if [ `find /opt/perl/lib/site_perl/5.*/auto/share/dist/GrowthForecast -type f | wc -l` -eq 20 ]; then \
     echo GrowthForecast share files exist; \
 else \
-    find /opt/perl/lib/site_perl/5.20.0/auto/share/dist/GrowthForecast -type f >&2; perl -e 'die "some GrowthForecast files missing!\n"'; \
+    find /opt/perl/lib/site_perl/5.*/auto/share/dist/GrowthForecast -type f >&2; perl -e 'die "some GrowthForecast files missing!\n"'; \
 fi
 
 ADD misc/header-growthforecast.pl /tmp/build/header-growthforecast.pl
