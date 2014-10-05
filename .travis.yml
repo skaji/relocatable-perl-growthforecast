@@ -1,5 +1,5 @@
 language: objective-c
-env: GITHUB_RELEASE_VERSION=0.5 PERL_VERSION=5.20.1 GF_VERSION=0.83
+env: GITHUB_RELEASE_VERSION=0.6 PERL_VERSION=5.20.1 GF_VERSION=0.83
 before_install: |
   brew unlink `brew list`; \
   brew install coreutils gnu-tar wget; \
