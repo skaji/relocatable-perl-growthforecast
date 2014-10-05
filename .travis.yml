@@ -1,0 +1,18 @@
+language: objective-c
+env: GITHUB_RELEASE_VERSION=0.5 PERL_VERSION=5.20.1 GF_VERSION=0.83
+before_install: |
+  brew unlink `brew list`; \
+  brew install coreutils gnu-tar wget; \
+  brew link --force coreutils gnu-tar wget; \
+  true # ignore failure
+script: "./misc/mac.sh"
+deploy:
+  provider: releases
+  api_key:
+    secure: ZEhm7mrWAkpQ01og1p31MNMFze4wCsZlY1L6YoNtyr6yCYZ9xwgBAazOXUSDTXf40vsDZOLtTLaibRMworz2GcYSXV1AIyOOtdkQcvBewMI9kLhl9ICu+a+kLv9uc/FbYuYIn7cEYYjpB0YQft3+/sZT9ILhdOOMHsPpAsBkKPQ=
+  file: growthforecast-$GF_VERSION-darwin-2level.tar.gz
+  skip_cleanup: true
+  on:
+    repo: shoichikaji/relocatable-perl-growthforecast
+    all_branches: true
+    tags: true
