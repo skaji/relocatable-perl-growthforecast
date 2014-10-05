@@ -95,5 +95,5 @@ NUM=`find $NAME/local/lib -type f -name "*.dylib" | xargs -L1 otool -L | grep /u
 if [ $NUM -ne 0 ]; then echo unexpected /usr/local deps; exit 1; fi
 
 # 9
-gtar czf ../$NAME.tar.gz $NAME
+gtar czf ../../$NAME.tar.gz $NAME
 
