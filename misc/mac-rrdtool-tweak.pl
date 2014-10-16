@@ -9,14 +9,13 @@ sub run { print "---> @_\n"; !system @_ or die "===> FAIL @_\n" }
 if (@ARGV && $ARGV[0] =~ /^(-h|--help)$/) {
     print <<'...';
 Usage:
-    > mac-rrdtool-tweak.pl [PERL_VERSION]
+    > mac-rrdtool-tweak.pl
 ...
     exit;
 }
 
-my $perl_version = shift || "5.20.0";
 my $lib_dir = "/opt/perl/local/lib";
-my $rrds_bundle = "/opt/perl/lib/site_perl/$perl_version/darwin-2level/auto/RRDs/RRDs.bundle";
+my ($rrds_bundle) = glob "/opt/perl/lib/site_perl/5.*/darwin-2level/auto/RRDs/RRDs.bundle";
 -e $lib_dir or die "missing $lib_dir\n";
 -e $rrds_bundle or die "missing $rrds_bundle\n";
 

@@ -33,8 +33,8 @@ RUN tar xzf Alien-RRDtool-0.06.tar.gz && \
 RUN chrpath -r \$ORIGIN/../../../../../../local/lib /opt/perl/lib/site_perl/5.*/x86_64-linux/auto/RRDs/RRDs.so
 RUN /opt/perl/bin/perl -MRRDs -e0
 
-RUN /opt/perl/bin/cpanm -nq --installdeps GrowthForecast@0.83
-RUN /opt/perl/bin/cpanm -nq GrowthForecast@0.83
+RUN /opt/perl/bin/cpanm -nq --installdeps GrowthForecast
+RUN /opt/perl/bin/cpanm -nq GrowthForecast
 
 # I don't know why: sometimes missing dist share files
 RUN if [ `find /opt/perl/lib/site_perl/5.*/auto/share/dist/GrowthForecast -type f | wc -l` -eq 20 ]; then \
@@ -48,11 +48,11 @@ RUN /opt/perl/bin/perl /tmp/build/header-growthforecast.pl /opt/perl/bin/growthf
 
 RUN /opt/perl/bin/change-shebang -f /opt/perl/bin/*
 
-RUN cp -r /opt/perl /tmp/growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
-RUN cd /tmp && tar czf /artifact/growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`.tar.gz \
-                                 growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
+RUN cp -r /opt/perl /tmp/growthforecast-`/opt/perl/bin/perl -MConfig -e 'print $Config{archname}'`
+RUN cd /tmp && tar czf /artifact/growthforecast-`/opt/perl/bin/perl -MConfig -e 'print $Config{archname}'`.tar.gz \
+                                 growthforecast-`/opt/perl/bin/perl -MConfig -e 'print $Config{archname}'`
 
-RUN rm -rf /tmp/growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
+RUN rm -rf /tmp/growthforecast-`/opt/perl/bin/perl -MConfig -e 'print $Config{archname}'`
 RUN rm -rf /tmp/build
 
 CMD ["sleep", "infinity"]

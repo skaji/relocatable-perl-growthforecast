@@ -1,9 +1,7 @@
 #!/bin/bash
 
 DIR=$( cd $(dirname $0) >/dev/null; pwd )
-PERL_VERSION=${PERL_VERSION:-5.20.0}
 GITHUB_RELEASE_VERSION=${GITHUB_RELEASE_VERSION:-0.3}
-GF_VERSION=${GF_VERSION:-0.83}
 
 set -e
 
@@ -19,7 +17,7 @@ find . -maxdepth 1 -name "*.log" -o -name "growthforecast-*.tar.gz" | xargs rm -
 find . -maxdepth 1 ! -path . -type d | xargs rm -rf
 
 # 1
-PERL_DIR="perl-v$PERL_VERSION-darwin-2level"
+PERL_DIR="perl-darwin-2level"
 URL="https://github.com/shoichikaji/relocatable-perl/releases/download/$GITHUB_RELEASE_VERSION/$PERL_DIR.tar.gz"
 if [ ! -e "${PERL_DIR}.tar.gz" ]; then
     echo "---> downloading $URL"
@@ -76,17 +74,17 @@ gtar xzf Alien-RRDtool-0.06.tar.gz
 )
 
 # 5
-/opt/perl/bin/perl ../mac-rrdtool-tweak.pl $PERL_VERSION
+/opt/perl/bin/perl ../mac-rrdtool-tweak.pl
 
 # 6
-/opt/perl/bin/cpanm --no-man-pages -nq GrowthForecast@$GF_VERSION
+/opt/perl/bin/cpanm --no-man-pages -nq GrowthForecast
 
 # 7
 /opt/perl/bin/perl ../header-growthforecast.pl /opt/perl/bin/growthforecast.pl
 /opt/perl/bin/change-shebang -f /opt/perl/bin/*
 
 # 8
-NAME=growthforecast-`/opt/perl/bin/perl -MConfig -MGrowthForecast -e 'print GrowthForecast->VERSION, "-$Config{archname}"'`
+NAME=growthforecast-`/opt/perl/bin/perl -MConfig -e 'print $Config{archname}'`
 gcp -r /opt/perl $NAME
 ./$NAME/bin/perl -MRRDs -e1
 NUM=`find $NAME/lib -name "*.bundle" | xargs -L1 otool -L | grep /usr/local | wc -l`
