@@ -1,41 +1,39 @@
 # Relocatable Perl with GrowthForecast
 
+[![Build Status](https://api.travis-ci.org/shoichikaji/relocatable-perli-growthforecast.svg)](https://travis-ci.org/shoichikaji/relocatable-perl-growthforecast)
+
 This repository is just an attempt to show
 how latest, pre-compiled, relocatable Perl is useful.
 
 You can download *latest*, *pre-compiled*, *relocatable* Perl with GrowthForecast from
 [release page](https://github.com/shoichikaji/relocatable-perl-growthforecast/releases).
 
-## install
+## how to install
 
 Just fetch a tarball (darwin-2level or x86_64-linux), and extract it to your favorite directory:
 
-    > wget https://github.com/shoichikaji/relocatable-perl-growthforecast/releases/download/0.21/growthforecast-0.83-darwin-2level.tar.gz
-    > tar xzf growthforecast-0.83-darwin-2level.tar.gz
-    > mv growthforecast-0.83-darwin-2level ~/my-favorite-name
+    # MacOS X example
+    > wget https://github.com/shoichikaji/relocatable-perl-growthforecast/releases/download/0.32/growthforecast-darwin-2level.tar.gz
+    > tar xzf growthforecast-darwin-2level.tar.gz
+    > mv growthforecast-darwin-2level ~/my-favorite-name
 
     > ~/my-favorite-name/bin/growthforecast.pl
 
-Then access 5125 port:
+Then GrowthForecast will be accepting connections at 5125 port:
 
     > curl http://localhost:5125
 
 I've confirmed that the pre-compiled perl worked on:
 
-* 64bit CentOS 6.4 and Ubuntu 12.04, 14.04 (growthforecast-0.83-x86_64-linux.tar.gz)
-* Mac OS X 10.9.4 (growthforecast-0.83-darwin-2level.tar.gz)
+* 64bit CentOS 6.5 and Ubuntu 12.04, 14.04 (growthforecast-x86_64-linux.tar.gz)
+* Mac OS X 10.9.5 (growthforecast-darwin-2level.tar.gz)
 
 ## how to build yourself
 
-It's pretty easy (I hope so). Install docker and type:
+See [Dockerfile](https://github.com/shoichikaji/relocatable-perl-growthforecast/blob/master/Dockerfile)
+and [mac.sh](https://github.com/shoichikaji/relocatable-perl-growthforecast/blob/master/misc/mac.sh).
 
-    > docker build -t you/perl git://github.com/shoichikaji/relocatable-perl-growthforecast.git
-    > docker run -d you/perl
-    > docker cp CONTAINER_ID:/opt/perl.tar.gz .
+## docker image
 
-## pull docker image
-
-    > docker pull skaji/relocatable-perl-growthforecas
-
-See https://registry.hub.docker.com/u/skaji/relocatable-perl-growthforecas
+https://registry.hub.docker.com/u/skaji/relocatable-perl-growthforecas
 
