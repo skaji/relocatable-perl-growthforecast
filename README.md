@@ -1,6 +1,6 @@
 # Relocatable Perl with GrowthForecast
 
-[![Build Status](https://api.travis-ci.org/shoichikaji/relocatable-perli-growthforecast.svg)](https://travis-ci.org/shoichikaji/relocatable-perl-growthforecast)
+[![Build Status](https://api.travis-ci.org/shoichikaji/relocatable-perl-growthforecast.svg)](https://travis-ci.org/shoichikaji/relocatable-perl-growthforecast)
 
 This repository is just an attempt to show
 how latest, pre-compiled, relocatable Perl is useful.
